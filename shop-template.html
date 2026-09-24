@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your Shop Name — Classic &amp; Vintage Motorcycles</title>
+<!--
+  TEMPLATE NOTES
+  - Replace everything in [BRACKETS] and the "Your Shop Name" text.
+  - Swap the placeholder image blocks (.ph) for <img src="..."> tags.
+  - Colors live in :root below — change them once to re-theme the whole page.
+-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --night:#0d1b2a;      /* header / footer */
+    --deep:#1b2f4a;       /* accents */
+    --moon:#e8e3cf;       /* warm off-white */
+    --accent:#4a8fd6;     /* links / buttons */
+    --text:#2a2a2a;
+    --bg:#f6f5f1;
+    --max:1100px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:"Open Sans",Arial,sans-serif;color:var(--text);background:var(--bg);line-height:1.7}
+  h1,h2,h3,h4,.nav a{font-family:"Oswald",Arial,sans-serif;text-transform:uppercase;letter-spacing:.06em}
+  a{color:var(--accent);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 20px}
+
+  /* ---------- HEADER ---------- */
+  header{background:var(--night);position:sticky;top:0;z-index:10;box-shadow:0 2px 8px rgba(0,0,0,.3)}
+  .bar{display:flex;align-items:center;justify-content:space-between;height:72px}
+  .logo{display:flex;align-items:center;gap:10px;color:var(--moon);font-family:"Oswald";font-size:1.3rem;letter-spacing:.08em}
+  .logo:hover{text-decoration:none}
+  .moon{width:34px;height:34px;border-radius:50%;background:var(--moon);box-shadow:inset -9px -3px 0 0 #b9b39a}
+  .nav{display:flex;gap:28px;list-style:none}
+  .nav li{position:relative}
+  .nav a{color:#fff;font-size:.95rem}
+  .nav a:hover{color:var(--moon);text-decoration:none}
+  .nav .drop{display:none;position:absolute;top:100%;left:-16px;background:var(--night);list-style:none;min-width:200px;padding:10px 0;border-top:3px solid var(--accent)}
+  .nav li:hover .drop,.nav li:focus-within .drop{display:block}
+  .nav .drop a{display:block;padding:8px 16px;text-transform:none;letter-spacing:0;font-family:"Open Sans"}
+  .menu-btn{display:none;background:none;border:0;color:#fff;font-size:1.7rem;cursor:pointer}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    background:
+      radial-gradient(circle at 78% 30%, rgba(232,227,207,.35) 0 60px, transparent 61px),
+      linear-gradient(180deg,#0d1b2a 0%,#1b2f4a 70%,#2d4466 100%);
+    /* To use a photo instead: background:url('hero.jpg') center/cover; */
+    color:#fff;text-align:center;padding:110px 20px 90px}
+  .hero .big-moon{width:120px;height:120px;margin:0 auto 24px;border-radius:50%;background:var(--moon);box-shadow:inset -28px -8px 0 0 #b9b39a,0 0 40px rgba(232,227,207,.4)}
+  .hero h1{font-size:clamp(2.2rem,5vw,3.6rem);color:var(--moon)}
+  .hero p{max-width:680px;margin:18px auto 0;font-size:1.1rem;opacity:.9}
+
+  /* ---------- INTRO ---------- */
+  .intro{padding:70px 0;text-align:center}
+  .intro p.lead{max-width:780px;margin:0 auto 40px;font-size:1.1rem}
+  .pillars{display:grid;grid-template-columns:1fr 1fr;gap:30px;max-width:900px;margin:0 auto}
+  .pillar{background:#fff;padding:32px 28px;border-top:4px solid var(--deep);box-shadow:0 2px 12px rgba(0,0,0,.06)}
+  .pillar h2{font-size:1.5rem;color:var(--deep);margin-bottom:8px}
+  .cta-line{margin-top:40px;font-style:italic}
+
+  /* ---------- CATEGORY CARDS ---------- */
+  .cats{padding:0 0 80px}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:30px}
+  .card{display:block;position:relative;overflow:hidden;background:var(--night);color:#fff}
+  .card:hover{text-decoration:none}
+  .ph{aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.35);font-size:.9rem;
+      background:repeating-linear-gradient(45deg,#1b2f4a 0 14px,#223a5a 14px 28px);transition:transform .4s}
+  .card img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block;transition:transform .4s}
+  .card:hover .ph,.card:hover img{transform:scale(1.05)}
+  .card h3{position:absolute;left:0;right:0;bottom:0;padding:18px 24px;font-size:1.6rem;
+           background:linear-gradient(transparent,rgba(13,27,42,.9))}
+
+  /* ---------- FOOTER ---------- */
+  footer{background:var(--night);color:#cfd6df;padding:60px 0 0}
+  .fcols{display:grid;grid-template-columns:repeat(3,1fr);gap:40px}
+  footer h4{color:var(--moon);font-size:1.15rem;margin-bottom:12px}
+  footer a{color:#fff}
+  .social{display:flex;gap:12px;list-style:none;margin-top:14px}
+  .social a{display:inline-flex;width:38px;height:38px;border-radius:50%;background:var(--deep);align-items:center;justify-content:center;font-size:.8rem;font-weight:600}
+  .social a:hover{background:var(--accent);text-decoration:none}
+  .btn{display:inline-block;margin-top:12px;padding:9px 20px;border:2px solid var(--moon);color:var(--moon);font-family:"Oswald";text-transform:uppercase;letter-spacing:.06em}
+  .btn:hover{background:var(--moon);color:var(--night);text-decoration:none}
+  .copy{margin-top:50px;padding:18px 0;border-top:1px solid rgba(255,255,255,.1);font-size:.85rem;text-align:center;opacity:.75}
+
+  /* ---------- MOBILE ---------- */
+  @media (max-width:780px){
+    .menu-btn{display:block}
+    .nav{display:none;position:absolute;top:72px;left:0;right:0;flex-direction:column;gap:0;background:var(--night);padding:10px 0}
+    .nav.open{display:flex}
+    .nav > li > a{display:block;padding:12px 20px}
+    .nav .drop{display:block;position:static;border:0;padding:0 0 0 20px}
+    .pillars,.grid,.fcols{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap bar">
+    <a class="logo" href="#"><span class="moon"></span>Your Shop Name</a>
+    <button class="menu-btn" aria-label="Menu" onclick="document.querySelector('.nav').classList.toggle('open')">☰</button>
+    <ul class="nav">
+      <li><a href="#">Home</a></li>
+      <li><a href="#">About ▾</a>
+        <ul class="drop">
+          <li><a href="#">Our Showroom</a></li>
+          <li><a href="#">Hours &amp; Directions</a></li>
+          <li><a href="#">[Blog / News]</a></li>
+        </ul>
+      </li>
+      <li><a href="#">Motorcycles for Sale</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="big-moon"></div>
+  <h1>Your Shop Name</h1>
+  <p>[One-line tagline — e.g. “Classic, used &amp; vintage motorcycles since 19XX.”]</p>
+</section>
+
+<section class="intro">
+  <div class="wrap">
+    <p class="lead">[Your Shop Name] has been helping riders find the right bike for over [XX] years, and we’d love to be part of your next adventure. Our showroom, service center and knowledgeable staff are waiting for you in [City, State].</p>
+    <div class="pillars">
+      <div class="pillar">
+        <h2>We Sell Motorcycles</h2>
+        <p>Classic, used and vintage motorcycles.</p>
+      </div>
+      <div class="pillar">
+        <h2>We Buy &amp; Consign</h2>
+        <p>Quality consignment bikes, including collections and estates.</p>
+      </div>
+    </div>
+    <p class="cta-line">Stop by, connect with us on social media, call or email.</p>
+  </div>
+</section>
+
+<section class="cats">
+  <div class="wrap grid">
+    <a class="card" href="#">
+      <div class="ph">[Motorcycles photo — 4:3]</div>
+      <!-- <img src="motorcycles.jpg" alt="Motorcycles in our showroom"> -->
+      <h3>Motorcycles</h3>
+    </a>
+    <a class="card" href="#">
+      <div class="ph">[Parts photo — 4:3]</div>
+      <!-- <img src="parts.jpg" alt="Parts and accessories"> -->
+      <h3>Parts</h3>
+    </a>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="wrap fcols">
+    <div>
+      <h4>Showroom</h4>
+      <p>[Street Address]<br>[City, State ZIP]</p>
+      <a class="btn" href="#">Hours &amp; Directions</a>
+    </div>
+    <div>
+      <h4>Contact Us</h4>
+      <p>Phone: <a href="tel:0000000000">[(000) 000-0000]</a><br>
+         Email: <a href="mailto:hello@example.com">[hello@example.com]</a></p>
+    </div>
+    <div>
+      <h4>Follow Along</h4>
+      <ul class="social">
+        <li><a href="#" aria-label="Facebook">FB</a></li>
+        <li><a href="#" aria-label="X">X</a></li>
+        <li><a href="#" aria-label="Instagram">IG</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="copy">© <span id="yr"></span> Your Shop Name — All Rights Reserved</div>
+</footer>
+
+<script>document.getElementById('yr').textContent=new Date().getFullYear();</script>
+</body>
+</html>
